@@ -6,3 +6,5 @@ bin/
 *.csproj.user
 *.StyleCop
 *.Cache
+*.csproj
+*.sln
