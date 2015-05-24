@@ -39,15 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implemenation\FindThreadBuilder\FindThreadBuilder.cs" />
+    <Compile Include="Implementation\FindThreadBuilder\FindThreadBuilder.cs" />
     <Compile Include="Interface\Builder\IFindThreadBuilder.cs" />
-    <Compile Include="Implemenation\FindThread\FindThread.cs" />
+    <Compile Include="Implementation\FindThread\FindThread.cs" />
     <Compile Include="Interface\IFindThread.cs" />
     <Compile Include="Interface\Builder\IBuilder.cs" />
     <Compile Include="Interface\IThreadManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Implemenation\FindThreadManager\ThreadManager.cs" />
-    <Compile Include="Implemenation\FindThread\Result.cs" />
+    <Compile Include="Implementation\FindThreadManager\ThreadManager.cs" />
+    <Compile Include="Implementation\FindThread\Result.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

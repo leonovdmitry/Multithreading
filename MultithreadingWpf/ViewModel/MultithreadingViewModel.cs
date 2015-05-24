@@ -97,7 +97,7 @@ namespace MultithreadingWpf.ViewModel
 							IsRun = false;
 							Action msgBox = () =>
 							{
-								MessageBox.Show( "УРА!", "Сообщение" );
+								MessageBox.Show( "Число найдено!", "Сообщение" );
 								_threadManager.Stop();
 							};
 							_uiDispatcher.Invoke( msgBox );

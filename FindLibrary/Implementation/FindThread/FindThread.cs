@@ -45,7 +45,7 @@ namespace FindLibrary.FThread
 				var tryValue = rand.Next( 0, 100 );
 				if( ValueToFind == tryValue )
 				{
-					result.Text = string.Format( "{0},{1}", tryValue, Thread.CurrentThread.Name );
+					result.Text = string.Format( "{0}, {1}, {2}", tryValue, Thread.CurrentThread.Name, DateTime.Now.ToString( "dd.MM HH:mm:ss" ) );
 					ShowResultAct( result );
 					IsAborted = true;
 				}

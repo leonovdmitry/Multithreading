@@ -1,44 +1,42 @@
 ﻿<Window x:Class="MultithreadingWpf.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Многопоточный поисковик чисел" Height="325" Width="350">
-    <ScrollViewer>
-        <StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Text="Введите число от 0 до 100:"/>
-                <TextBox Text="{Binding ValueToFind}" Width="30" Margin="10,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Text="Введите количество потоков:"/>
-                <TextBox Text="{Binding ThreadsCount}" Width="30" Margin="10,0"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Text="Введите задержку:"/>
-                <TextBox Text="{Binding Delay}" Width="30" Margin="10,0"/>
-            </StackPanel>
-
-            <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Command="{Binding StartStopCommand}" Margin="5">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Content" Value="Старт"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsRun,Mode=TwoWay}" Value="true">
-                                <Setter Property="Content" Value="Стоп"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
-
-            <ListBox Height="140" ItemsSource="{Binding Output}" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border Background="{Binding Color}">
-                            <TextBlock Text="{Binding Text}"/>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+        Title="Многопоточный поисковик чисел" Height="330" Width="390">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Введите число от 0 до 100:"/>
+            <TextBox Text="{Binding ValueToFind}" Width="30" Margin="10,0"/>
         </StackPanel>
-    </ScrollViewer>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Введите количество потоков:"/>
+            <TextBox Text="{Binding ThreadsCount}" Width="30" Margin="10,0"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBlock Text="Введите задержку (сек):"/>
+            <TextBox Text="{Binding Delay}" Width="30" Margin="10,0"/>
+        </StackPanel>
+
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Command="{Binding StartStopCommand}" Margin="5">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Content" Value="Старт"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsRun,Mode=TwoWay}" Value="true">
+                            <Setter Property="Content" Value="Стоп"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <ListBox Height="145" ItemsSource="{Binding Output}" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="{Binding Color}">
+                        <TextBlock Text="{Binding Text}"/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
 </Window>
