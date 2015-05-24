@@ -1,7 +1,4 @@
-﻿using FindLibrary.Builders;
-using FindLibrary.FindThreadManager;
-using Microsoft.Practices.Unity;
-using System.Windows;
+﻿using System.Windows;
 
 namespace MultithreadingWpf.View
 {

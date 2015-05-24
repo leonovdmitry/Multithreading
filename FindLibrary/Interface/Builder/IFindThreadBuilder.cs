@@ -1,6 +1,7 @@
-﻿using FindLibrary.FThread;
+﻿using FindLibrary.Builder;
+using FindLibrary.FThread;
 
-namespace FindLibrary.Builders
+namespace FindLibrary.FindThreadBuilder
 {
 	public interface IFindThreadBuilder : IBuilder<IFindThread>
 	{

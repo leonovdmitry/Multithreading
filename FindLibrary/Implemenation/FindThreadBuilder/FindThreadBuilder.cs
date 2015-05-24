@@ -1,7 +1,7 @@
 ﻿using FindLibrary.FThread;
 using System;
 
-namespace FindLibrary.Builders
+namespace FindLibrary.FindThreadBuilder
 {
 	public class FindThreadBuilder : IFindThreadBuilder
 	{

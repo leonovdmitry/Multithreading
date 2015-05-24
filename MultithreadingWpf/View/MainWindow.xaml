@@ -1,7 +1,7 @@
 ﻿<Window x:Class="MultithreadingWpf.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="325" Width="350">
+        Title="Многопоточный поисковик чисел" Height="325" Width="350">
     <ScrollViewer>
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5">
@@ -30,7 +30,7 @@
                 </Button.Style>
             </Button>
 
-            <ListBox MinHeight="140" ItemsSource="{Binding Output}" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox Height="140" ItemsSource="{Binding Output}" Margin="5" ScrollViewer.VerticalScrollBarVisibility="Auto">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border Background="{Binding Color}">

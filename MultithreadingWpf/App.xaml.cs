@@ -1,4 +1,4 @@
-﻿using FindLibrary.Builders;
+﻿using FindLibrary.FindThreadBuilder;
 using FindLibrary.FindThreadManager;
 using Microsoft.Practices.Unity;
 using MultithreadingWpf.View;

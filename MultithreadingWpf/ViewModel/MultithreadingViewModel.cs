@@ -1,5 +1,4 @@
 ﻿using FindLibrary;
-using FindLibrary.Builders;
 using FindLibrary.FindThreadManager;
 using Microsoft.Practices.Unity;
 using System;
@@ -86,7 +85,7 @@ namespace MultithreadingWpf.ViewModel
 			{
 				lock( syncObj )
 				{
-					if( !_threadManager.IsAborted )
+					if( !_threadManager.IsAborted && IsRun )
 					{
 						Action act = () => Output.Add( x );
 						_uiDispatcher.Invoke( act );
@@ -96,9 +95,12 @@ namespace MultithreadingWpf.ViewModel
 						if( IsRun )
 						{
 							IsRun = false;
-							Action msgBox = () => MessageBox.Show( "УРА!", "Сообщение" );
+							Action msgBox = () =>
+							{
+								MessageBox.Show( "УРА!", "Сообщение" );
+								_threadManager.Stop();
+							};
 							_uiDispatcher.Invoke( msgBox );
-							_threadManager.Stop();
 						}
 					}
 				}
@@ -108,7 +110,6 @@ namespace MultithreadingWpf.ViewModel
 			{
 				IsRun = false;
 				_threadManager.Stop();
-
 			}
 		}
 

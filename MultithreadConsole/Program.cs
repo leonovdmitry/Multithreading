@@ -1,4 +1,4 @@
-﻿using FindLibrary.Builders;
+﻿using FindLibrary.FindThreadBuilder;
 using FindLibrary.FindThreadManager;
 using Microsoft.Practices.Unity;
 using System;
@@ -18,7 +18,6 @@ namespace MultithreadConsole
 
 		private static void AppStart()
 		{
-
 			var manager = container.Resolve<IThreadManager>();
 			Console.Write( "Значение для поиска: " );
 			var valueToFind = uint.Parse( Console.ReadLine() );

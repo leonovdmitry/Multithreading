@@ -39,17 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\FindThreadBuilder\FindThreadBuilder.cs" />
-    <Compile Include="Builders\FindThreadBuilder\IFindThreadBuilder.cs" />
-    <Compile Include="FindThread\FindThread.cs" />
-    <Compile Include="FindThread\IFindThread.cs" />
-    <Compile Include="Builders\IBuilder.cs" />
-    <Compile Include="FindThreadManager\IThreadManager.cs" />
+    <Compile Include="Implemenation\FindThreadBuilder\FindThreadBuilder.cs" />
+    <Compile Include="Interface\Builder\IFindThreadBuilder.cs" />
+    <Compile Include="Implemenation\FindThread\FindThread.cs" />
+    <Compile Include="Interface\IFindThread.cs" />
+    <Compile Include="Interface\Builder\IBuilder.cs" />
+    <Compile Include="Interface\IThreadManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FindThreadManager\ThreadManager.cs" />
-    <Compile Include="FindThread\Result.cs" />
+    <Compile Include="Implemenation\FindThreadManager\ThreadManager.cs" />
+    <Compile Include="Implemenation\FindThread\Result.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

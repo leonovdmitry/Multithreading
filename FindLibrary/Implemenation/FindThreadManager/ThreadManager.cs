@@ -1,4 +1,4 @@
-﻿using FindLibrary.Builders;
+﻿using FindLibrary.FindThreadBuilder;
 using FindLibrary.FThread;
 using System;
 using System.Collections.Generic;
