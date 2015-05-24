@@ -1,5 +1,4 @@
 ﻿using FindLibrary.FThread;
-using System;
 
 namespace FindLibrary.Builders
 {
@@ -8,6 +7,5 @@ namespace FindLibrary.Builders
 		IFindThreadBuilder SetValueToFind( uint valueToFind );
 		IFindThreadBuilder SetDelay( uint delay );
 		IFindThreadBuilder SetName( string name );
-		IFindThreadBuilder SetFindAction( Action findAction );
 	}
 }

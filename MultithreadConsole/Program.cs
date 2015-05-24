@@ -2,42 +2,38 @@
 using FindLibrary.FindThreadManager;
 using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
 
-namespace multithread
+namespace MultithreadConsole
 {
 	class Program
 	{
-		static IUnityContainer unitycontainer;
+		static IUnityContainer container;
 		static void Main( string[] args )
 		{
-			unitycontainer = new UnityContainer();
-			unitycontainer.RegisterType<IFindThreadBuilder, FindThreadBuilder>();
-			unitycontainer.RegisterType<IThreadManager, ThreadManager>();
+			container = new UnityContainer();
+			container.RegisterType<IFindThreadBuilder, FindThreadBuilder>();
+			container.RegisterType<IThreadManager, ThreadManager>( new ContainerControlledLifetimeManager() );
 			AppStart();
 		}
 
 		private static void AppStart()
 		{
 
-			var manager = unitycontainer.Resolve<IThreadManager>();
-			Console.Write( "Value to find: " );
+			var manager = container.Resolve<IThreadManager>();
+			Console.Write( "Значение для поиска: " );
 			var valueToFind = uint.Parse( Console.ReadLine() );
-			Console.Write( "threads: " );
+			Console.Write( "Количество потоков: " );
 			var threadsCount = uint.Parse( Console.ReadLine() );
-			Console.Write( "delay(sec): " );
+			Console.Write( "Задержка(сек): " );
 			var delayValue = uint.Parse( Console.ReadLine() ) * 1000;
 			manager.Init( valueToFind, threadsCount, delayValue );
-			Console.WriteLine( "press key s -> Stop \r\n x -> Exit " );
+			Console.WriteLine( "Нажмите: \r\n s -> Стоп \r\n x -> Выход " );
 			var syncObj = new Object();
 			manager.Start( ( x ) =>
 			{
 				lock( syncObj )
 					if( !manager.IsAborted )
-						Console.WriteLine( x );
+						Console.WriteLine( x.Text );
 					else
 						manager.Stop();
 			} );

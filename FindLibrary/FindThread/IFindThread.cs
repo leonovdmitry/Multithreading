@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace FindLibrary.FThread
 {
@@ -10,11 +7,9 @@ namespace FindLibrary.FThread
 		uint ValueToFind { get; }
 		uint Delay { get; }
 		bool IsAborted { get; }
-		Action<String> ShowResultAct { get; }
-		Action StopAllAct { get; }
-
+		Action<Result> ShowResultAct { get; }
 		void Init( uint valueToFind, uint delay, string name );
-		void Start( Action<string> showResultAct, Action stopAllAct );
+		void Start( Action<Result> showResultAct );
 		void Stop();
 	}
 }

@@ -1,4 +1,7 @@
-﻿using MultithreadingWpf.View;
+﻿using FindLibrary.Builders;
+using FindLibrary.FindThreadManager;
+using Microsoft.Practices.Unity;
+using MultithreadingWpf.View;
 using MultithreadingWpf.ViewModel;
 using System.Windows;
 
@@ -11,12 +14,15 @@ namespace MultithreadingWpf
 	{
 		public App()
 		{
-			var mw = new MainWindow
+			IUnityContainer conteiner = new UnityContainer();
+			conteiner.RegisterType<IFindThreadBuilder, FindThreadBuilder>();
+			conteiner.RegisterType<IThreadManager, ThreadManager>( new ContainerControlledLifetimeManager() );
+			var mainWindow = new MainWindow
 			{
-				DataContext = new MultithreadingViewModel()
+				DataContext = new MultithreadingViewModel( conteiner.Resolve<IThreadManager>() )
 			};
 
-			mw.Show();
+			mainWindow.Show();
 		}
 	}
 }

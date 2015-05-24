@@ -28,12 +28,6 @@ namespace FindLibrary.Builders
 			return this;
 		}
 
-		public IFindThreadBuilder SetFindAction( Action findAction )
-		{
-			_findAction = findAction;
-			return this;
-		}
-
 		public IFindThread Build()
 		{
 			IFindThread fThread = new FindThread();

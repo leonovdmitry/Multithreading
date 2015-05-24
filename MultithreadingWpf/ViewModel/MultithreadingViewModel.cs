@@ -1,11 +1,13 @@
-﻿using FindLibrary.Builders;
+﻿using FindLibrary;
+using FindLibrary.Builders;
 using FindLibrary.FindThreadManager;
+using Microsoft.Practices.Unity;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace MultithreadingWpf.ViewModel
 {
@@ -16,95 +18,102 @@ namespace MultithreadingWpf.ViewModel
 		private uint _valueToFind;
 		private uint _threadsCount;
 		private uint _delay;
-		private List<string> _output;
 
-		#region ctor
-		public MultithreadingViewModel()
+		public MultithreadingViewModel( IThreadManager threadManager )
 		{
-			_output = new List<string>();
+			Output = new ObservableCollection<Result>();
 			StartStopCommand = new Command( arg => StartStopHandler() );
-			_threadManager = new ThreadManager( new FindThreadBuilder() );
+			_threadManager = threadManager;
 		}
-		#endregion
-
-		#region Properties
 
 		public uint ValueToFind
 		{
 			get
-			{ return _valueToFind; }
-			set
 			{
-				_valueToFind = value;
-				OnPropertyChanged( "ValueToFind" );
+				if( _valueToFind < 0 || _valueToFind > 100 )
+					_valueToFind = 0;
+				return _valueToFind;
 			}
+			set { _valueToFind = value; }
+
 		}
 		public uint ThreadsCount
 		{
 			get
-			{ return _threadsCount; }
-			set
 			{
-				_threadsCount = value;
-				OnPropertyChanged( "ThreadsCount" );
+				if( _threadsCount < 1 )
+					_threadsCount = 1;
+				return _threadsCount;
 			}
+			set { _threadsCount = value; }
+
 		}
 		public uint Delay
 		{
 			get
-			{ return _delay; }
+			{
+				if( _delay < 0 )
+					_delay = 0;
+				return _delay;
+			}
 			set
 			{
-				_delay = value;
-				OnPropertyChanged( "Delay" );
+				_delay = value * 1000;
 			}
 		}
-		List<string> Output
-		{
-			get
-			{ return _output; }
-			set
-			{
-				_output = value;
-				OnPropertyChanged( "Output" );
-			}
-		}
-
+		public ObservableCollection<Result> Output { get; set; }
 		public ICommand StartStopCommand { get; set; }
+		public bool IsRun
+		{
+			get { return _isRun; }
+			set
+			{
+				_isRun = value;
+				OnPropertyChanged( "IsRun" );
+			}
+		}
 
-		#endregion
 		private void StartStopHandler()
 		{
-			if( !_isRun )
+			var _uiDispatcher = Dispatcher.CurrentDispatcher;
+			if( !IsRun )
 			{
-				_isRun = true;
+				IsRun = true;
+				Output.Clear();
 				_threadManager.Init( ValueToFind, ThreadsCount, Delay );
 				var syncObj = new Object();
 				_threadManager.Start( ( x ) =>
 			{
 				lock( syncObj )
+				{
 					if( !_threadManager.IsAborted )
 					{
-
-						Output.Add( x );
-						OnPropertyChanged( "Output" );
+						Action act = () => Output.Add( x );
+						_uiDispatcher.Invoke( act );
 					}
 					else
 					{
-						_threadManager.Stop();
-						_isRun = false;
+						if( IsRun )
+						{
+							IsRun = false;
+							Action msgBox = () => MessageBox.Show( "УРА!", "Сообщение" );
+							_uiDispatcher.Invoke( msgBox );
+							_threadManager.Stop();
+						}
 					}
+				}
 			} );
 			}
 			else
 			{
+				IsRun = false;
 				_threadManager.Stop();
-				Output.Clear();
-				_isRun = false;
+
 			}
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;
+
 
 		protected virtual void OnPropertyChanged( string propertyName )
 		{

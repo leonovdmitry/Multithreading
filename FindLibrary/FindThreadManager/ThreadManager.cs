@@ -3,31 +3,20 @@ using FindLibrary.FThread;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading;
 
 namespace FindLibrary.FindThreadManager
 {
 	public class ThreadManager : IThreadManager
 	{
-		#region ctor
-
 		public ThreadManager( IFindThreadBuilder builder )
 		{
 			_builder = builder;
 		}
 
-		#endregion
-
-		#region Fields
-
 		List<IFindThread> _workThreads;
 		IFindThreadBuilder _builder;
 		uint _valueToFind;
 
-		#endregion
-
-		#region IThreadManager
 		public void Init( uint valueToFind, uint threadsCount, uint delay )
 		{
 			_valueToFind = valueToFind;
@@ -38,9 +27,9 @@ namespace FindLibrary.FindThreadManager
 			}
 		}
 
-		public void Start( Action<string> showResultAct )
+		public void Start( Action<Result> showResultAct )
 		{
-			_workThreads.ForEach( t => t.Start( showResultAct, Stop ) );
+			_workThreads.ForEach( t => t.Start( showResultAct ) );
 		}
 
 		public void Stop()
@@ -52,14 +41,5 @@ namespace FindLibrary.FindThreadManager
 		{
 			get { return _workThreads.Any( t => t.IsAborted ); }
 		}
-
-		#endregion
-
-		#region private
-
-
-		#endregion
-
-
 	}
 }

@@ -8,25 +8,13 @@ namespace MultithreadingWpf.ViewModel
 {
 	public class Command : ICommand
 	{
-		#region Constructor
-
 		public Command( Action<object> action )
 		{
 			ExecuteDelegate = action;
 		}
 
-		#endregion
-
-
-		#region Properties
-
 		public Predicate<object> CanExecuteDelegate { get; set; }
 		public Action<object> ExecuteDelegate { get; set; }
-
-		#endregion
-
-
-		#region ICommand Members
 
 		public bool CanExecute( object parameter )
 		{
@@ -51,7 +39,5 @@ namespace MultithreadingWpf.ViewModel
 				ExecuteDelegate( parameter );
 			}
 		}
-
-		#endregion
 	}
 }

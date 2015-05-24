@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultithreadConsole", "multithread\MultithreadConsole.csproj", "{5604E1A0-D731-4DE1-9922-E108DA60F0DD}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FindLibrary", "FindLibrary\FindLibrary.csproj", "{D5AB0943-7B11-4AA3-BF8E-A034E161FF03}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultithreadingWpf", "MultithreadingWpf\MultithreadingWpf.csproj", "{19C68A9B-7CFE-4B00-A7AD-29591B319232}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultithreadConsole", "MultithreadConsole\MultithreadConsole.csproj", "{5604E1A0-D731-4DE1-9922-E108DA60F0DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,16 +19,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|x86.ActiveCfg = Release|Any CPU
 		{D5AB0943-7B11-4AA3-BF8E-A034E161FF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5AB0943-7B11-4AA3-BF8E-A034E161FF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5AB0943-7B11-4AA3-BF8E-A034E161FF03}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -49,6 +39,16 @@ Global
 		{19C68A9B-7CFE-4B00-A7AD-29591B319232}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{19C68A9B-7CFE-4B00-A7AD-29591B319232}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{19C68A9B-7CFE-4B00-A7AD-29591B319232}.Release|x86.ActiveCfg = Release|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5604E1A0-D731-4DE1-9922-E108DA60F0DD}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
