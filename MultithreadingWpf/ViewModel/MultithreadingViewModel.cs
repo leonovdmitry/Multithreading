@@ -80,14 +80,17 @@ namespace MultithreadingWpf.ViewModel
 				IsRun = true;
 				Output.Clear();
 				_threadManager.Init( ValueToFind, ThreadsCount, Delay );
-				var syncObj = new Object();
 				_threadManager.Start( ( x ) =>
 			{
-				lock( syncObj )
+				lock( Output )
 				{
 					if( !_threadManager.IsAborted && IsRun )
 					{
-						Action act = () => Output.Add( x );
+						Action act = () =>
+						{
+							if( IsRun )
+								Output.Add( x );
+						};
 						_uiDispatcher.Invoke( act );
 					}
 					else

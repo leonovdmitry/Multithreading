@@ -39,7 +39,6 @@ namespace FindLibrary.FThread
 			Random rand = new Random();
 			while( true )
 			{
-
 				Result result = new Result();
 				Thread.Sleep( 10 );
 				var tryValue = rand.Next( 0, 100 );
